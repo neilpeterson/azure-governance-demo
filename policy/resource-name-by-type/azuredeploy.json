@@ -1,0 +1,19 @@
+{
+	"if": {
+		"allOf": [
+			{
+			"not": {
+				"field": "name",
+				"match": "[parameters('namePattern')]"
+			}
+		},
+		{
+			"field": "type",
+			"equals": "[parameters('type')]"
+		}
+		]
+	},
+	"then": {
+		"effect": "deny"
+	}
+}
