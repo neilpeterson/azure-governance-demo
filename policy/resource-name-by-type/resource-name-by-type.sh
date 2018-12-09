@@ -2,8 +2,8 @@ RESOURCE_GROUP=myPolicyDemo
 POLICY_NAME=aci-name
 NAME_PATTERN=container##
 RESOURCE_TYPE=Microsoft.ContainerInstance/containerGroups
-POLICY=https://raw.githubusercontent.com/neilpeterson/azure-governance-demo/master/policy/container-instances/azuredeploy.json
-PARAM=https://raw.githubusercontent.com/neilpeterson/azure-governance-demo/master/policy/container-instances/azurepolicy.parameters.json
+POLICY=https://raw.githubusercontent.com/neilpeterson/talk-azure-governance-demo/master/policy/resource-name-by-type/azuredeploy.json
+PARAM=https://raw.githubusercontent.com/neilpeterson/talk-azure-governance-demo/master/policy/resource-name-by-type/azurepolicy.parameters.json
 
 # Create  resource group
 az group create --name $RESOURCE_GROUP --location eastus
