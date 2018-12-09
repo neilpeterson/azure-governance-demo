@@ -1,16 +1,15 @@
 {
 	"if": {
-		"allOf": [
+		"allOf": [{
+				"not": {
+					"field": "name",
+					"match": "[parameters('namePattern')]"
+				}
+			},
 			{
-			"not": {
-				"field": "name",
-				"match": "[parameters('namePattern')]"
+				"field": "type",
+				"equals": "[parameters('resourceType')]"
 			}
-		},
-		{
-			"field": "type",
-			"equals": "[parameters('resourceType')]"
-		}
 		]
 	},
 	"then": {
