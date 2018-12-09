@@ -7,8 +7,8 @@
 RESOURCE_GROUP=myPolicyDemo
 POLICY_NAME=aci-name
 NAME_PATTERN=container##
-POLICY=https://raw.githubu=sercontent.com/Azure-Samples/ignite-tour-lp4/master/LP4S4/policy-demo/aci-naming/azuredeploy.json?token=AHezGzaWkB4vdfUYBi5OmjRmjYXveqj6ks5cFqi6wA%3D%3D
-PARAM=https://raw.githubusercontent.com/Azure-Samples/ignite-tour-lp4/master/LP4S4/policy-demo/aci-naming/azurepolicy.parameters.json?token=AHezG_SIFc_HSSIl0U4-wUkTk1ued5NAks5cFqjqwA%3D%3D
+POLICY=https://raw.githubusercontent.com/neilpeterson/azure-governance-demo/master/policy/container-instances/azuredeploy.json
+PARAM=https://raw.githubusercontent.com/neilpeterson/azure-governance-demo/master/policy/container-instances/azurepolicy.parameters.json
 
 # Create  resource group
 az group create --name $RESOURCE_GROUP --location eastus
