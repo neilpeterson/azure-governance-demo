@@ -6,6 +6,10 @@ TODO - Populate Demos
 
 ## Azure Policy
 
+**Audit / Resource Group Location**
+
+Manually create policy to demo portal and build in policy.
+
 **Deny / Naming:**
 
 Enforce a **naming convention** for a **named resource type**, **deny** if not met.
@@ -15,7 +19,7 @@ cd ~/storage/speaking-engagements/talk-azure-governance/policy/name-by-type
 sh ./policyEnforceName.sh
 ```
 
-**Deny: Enforce naming convention**
+**Deny:**
 
 Enforce a tag, **deny** if not specified.
 
@@ -41,11 +45,11 @@ TODO - add policy that perhaps audits all resource group locations?
 
 **Manual Demo**
 
-Create blue print consisting of two of the above policies, and resource group, and ARM template.
+Create blue print consisting of two of the above policies, and resource group, and Resource Manager template.
 
 **Rest Demo**
 
-REST interface is the only automation tooling avaliable. It's rough rough, but demo for demo sake.
+REST interface is the only automation tooling available. It's rough, but demo for demo sake.
 
 Create and Publish:
 
