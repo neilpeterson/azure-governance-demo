@@ -2,7 +2,19 @@
 
 ## Azure RBAC
 
-TODO - Populate Demos
+**Portal Intro to RBAC**
+
+- Show subscription and established roles (1 owner, 1 reader)
+- Log in as reader and attempt to create something
+- Update reader to ? and show changes
+
+**Automation**
+
+- Change user back to reader using the Azure CLI
+
+**Automtaion Templates**
+
+- Deploy a new service and configure IAM .via template
 
 ## Azure Policy
 
@@ -41,6 +53,10 @@ sh ./policyTagAppend.sh
 
 TODO - add policy that perhaps audits all resource group locations?
 
+**Initiative:**
+
+TODO - add CLI example for initiative.
+
 ## Azure Blueprints
 
 **Manual Demo**
@@ -64,3 +80,7 @@ Assign (NOT Working):
 cd ~/storage/speaking-engagements/talk-azure-governance/blueprints/assign-blueprint
 pwsh ./AssignBlueprint.ps1
 ```
+
+**STRETCH: Azure DevOPs and Blueprints**
+
+TODO - working on this.
