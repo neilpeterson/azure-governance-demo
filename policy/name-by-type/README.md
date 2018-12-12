@@ -1,14 +1,13 @@
-# Azure Container Instances
-
-## Container Instance Naming Convention
+# Name by type
+# Scope: Resource Group
 
 ```
 # Values
-RESOURCE_GROUP=myPolicyDemo
+RESOURCE_GROUP=policyEnforceName
 POLICY_NAME=aci-name
 NAME_PATTERN=container##
-POLICY=https://raw.githubusercontent.com/neilpeterson/azure-governance-demo/master/policy/container-instances/azuredeploy.json
-PARAM=https://raw.githubusercontent.com/neilpeterson/azure-governance-demo/master/policy/container-instances/azurepolicy.parameters.json
+POLICY=./azuredeploy.json
+PARAM=./azurepolicy.parameters.json
 
 # Create  resource group
 az group create --name $RESOURCE_GROUP --location eastus
