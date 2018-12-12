@@ -6,15 +6,23 @@
 
 - Show subscription and established roles (1 owner, 1 reader)
 - Log in as reader and attempt to create something
-- Update reader to ? and show changes
+- Update reader to Restart VM (custom role) and show result
 
 **Automation**
 
-- Change user back to reader using the Azure CLI
+Create custom role with Azure CLI
 
-**Automtaion Templates**
+```
+cd ~/storage/speaking-engagements/talk-azure-governance/rbac
+az role definition create --role-definition container-instances-all.json
+```
 
-- Deploy a new service and configure IAM .via template
+Assign custom role with Azure CLI
+
+```
+cd ~/storage/speaking-engagements/talk-azure-governance/rbac
+az role assignment create --role "Container Instances Read / Write" --assignee rebecca@nepeters.com
+```
 
 ## Azure Policy
 
