@@ -37,5 +37,5 @@ $body = Get-Content -Raw -Path $Blueprint
 Invoke-RestMethod -Method PUT -Uri $BPCreateUpdate -Headers $Headers -Body $body -ContentType "application/json"
 
 # Publish Blueprint
-$Publish = "https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}/versions/Draft{2}" -f $ManagetGroup, $BlueprintName, $BPApiVersion
+$Publish = "https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}/versions/V1{2}" -f $ManagetGroup, $BlueprintName, $BPApiVersion
 Invoke-RestMethod -Method PUT -Uri $Publish -Headers $Headers
