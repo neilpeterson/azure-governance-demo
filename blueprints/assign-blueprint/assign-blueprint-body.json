@@ -1,0 +1,18 @@
+{
+    "identity": {
+      "type": "SystemAssigned"
+    },
+    "location": "eastus",
+    "properties": {
+      "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+      "blueprintId": "",
+      "parameters": {
+      },
+      "resourceGroups": {
+        "storageRG": {
+          "name": "defaultRG",
+          "location": "eastus"
+        }
+      }
+    }
+  }
