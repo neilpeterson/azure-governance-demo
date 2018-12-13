@@ -6,17 +6,12 @@
     Intent: Sample to demonstrate Azure BluePrints with Azure DevOps
  #>
 
-# Management group, Blueprint name, and BP Endoints
-$ManagetGroup='nepeters-internal'
-$BlueprintName='DevOpsBluePrint'
-$BPApiVersion = '?api-version=2017-11-11-preview'
-$BPCreateUpdate = 'https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}{2}' -f $ManagetGroup, $BlueprintName, $BPApiVersion
-
-# Blueprint definition file
-$Blueprint = 'blueprint-body.json'
-
- # Key Vault Name
-$Vault = 'nepeterskv007'
+param (
+    [string]$ManagetGroup = 'nepeters-internal',
+    [string]$BlueprintName = 'DevOpsBluePrint',
+    [string]$Vault = 'nepeterskv007',
+    [string]$Blueprint = 'blueprint-body.json'
+ )
 
 # Get Auth values from KeyVault
 $TenantId = (Get-AzKeyVaultSecret -VaultName $Vault -Name AzureTenantID).SecretValueText
@@ -33,9 +28,17 @@ $Token = Invoke-RestMethod -Method Post -Uri $RequestAccessTokenUri -Body $body 
 # Create BluePrint
 $Headers = @{}
 $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_token)")
+$BPCreateUpdate = 'https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}?api-version=2017-11-11-preview' -f $ManagetGroup, $BlueprintName
 $body = Get-Content -Raw -Path $Blueprint
 Invoke-RestMethod -Method PUT -Uri $BPCreateUpdate -Headers $Headers -Body $body -ContentType "application/json"
 
-# Publish Blueprint
-$Publish = "https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}/versions/V1{2}" -f $ManagetGroup, $BlueprintName, $BPApiVersion
+# Get Published BP / Last version number
+# Can use this if I want to sequence versions numbers
+# $Get = "https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}/versions?api-version=2017-11-11-preview" -f $ManagetGroup, $BlueprintName
+# $pubBP = Invoke-RestMethod -Method GET -Uri $Get -Headers $Headers
+# write-host $pubBP.value[$pubBP.value.Count - 1].name
+
+# Publish Blueprint with random version number
+$version = get-random
+$Publish = "https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}/versions/{2}?api-version=2017-11-11-preview" -f $ManagetGroup, $BlueprintName, $version
 Invoke-RestMethod -Method PUT -Uri $Publish -Headers $Headers
