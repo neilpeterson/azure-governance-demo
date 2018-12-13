@@ -69,7 +69,7 @@ TODO - add CLI example for initiative.
 
 **Manual Demo**
 
-Create blue print consisting of two of the above policies, and resource group, and Resource Manager template.
+Create blueprint consisting of two of the above policies, and resource group, and Resource Manager template.
 
 **Rest Demo**
 
@@ -82,7 +82,7 @@ cd ~/storage/speaking-engagements/talk-azure-governance/blueprints/create-bluepr
 pwsh ./CreateUpdateBlueprint.ps1
 ```
 
-Assign (NOT Working):
+Assign:
 
 ```
 cd ~/storage/speaking-engagements/talk-azure-governance/blueprints/assign-blueprint
