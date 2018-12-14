@@ -89,6 +89,6 @@ cd ~/storage/speaking-engagements/talk-azure-governance/blueprints/assign-bluepr
 pwsh ./AssignBlueprint.ps1
 ```
 
-**STRETCH: Azure DevOPs and Blueprints**
+**Azure DevOPs and Blueprints**
 
-TODO - working on this.
+[![Build Status](https://nepeters-devops.visualstudio.com/azure-blueprints/_apis/build/status/azure-blueprints-CI?branchName=master)](https://nepeters-devops.visualstudio.com/azure-blueprints/_build/latest?definitionId=8?branchName=master)
