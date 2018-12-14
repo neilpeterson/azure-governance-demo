@@ -17,12 +17,6 @@ param (
    [string]$SubscriptionId
  )
 
-# Get Auth values from KeyVault
-# $TenantId = (Get-AzKeyVaultSecret -VaultName $Vault -Name AzureTenantID).SecretValueText
-# $ClientId = (Get-AzKeyVaultSecret -VaultName $Vault -Name AzureClientID).SecretValueText
-# $ClientSecret = (Get-AzKeyVaultSecret -VaultName $Vault -Name AzureClientSecret).SecretValueText
-# $SubscriptionId = (Get-AzKeyVaultSecret -VaultName $Vault -Name AzureSubscriptionID).SecretValueText
-
 # Acquire an access token
 $Resource = "https://management.core.windows.net/"
 $RequestAccessTokenUri = 'https://login.microsoftonline.com/{0}/oauth2/token' -f $TenantId

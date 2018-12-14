@@ -10,14 +10,12 @@
    [string]$ManagetGroup = 'nepeters-internal',
    [string]$BlueprintName = 'DevOpsBluePrint',
    [string]$Vault = 'nepeterskv007',
-   [string]$Blueprint = 'assign-blueprint-body.json'
+   [string]$Blueprint = 'assign-blueprint-body.json',
+   [string]$TenantId,
+   [string]$ClientId,
+   [string]$ClientSecret,
+   [string]$SubscriptionId
 )
-
- # Get Auth values from KeyVault
- $TenantId = (Get-AzKeyVaultSecret -VaultName $Vault -Name AzureTenantID).SecretValueText
- $ClientId = (Get-AzKeyVaultSecret -VaultName $Vault -Name AzureClientID).SecretValueText
- $ClientSecret = (Get-AzKeyVaultSecret -VaultName $Vault -Name AzureClientSecret).SecretValueText
- $SubscriptionId = (Get-AzKeyVaultSecret -VaultName $Vault -Name AzureSubscriptionID).SecretValueText
 
 # Acquire an access token
 $Resource = 'https://management.core.windows.net/'
