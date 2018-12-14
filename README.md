@@ -12,9 +12,7 @@
 
 **Automation**
 
-Create custom role with Azure CLI:
-
-Two sample in the repo:
+Create custom role with Azure CLI, two samples in the repo:
 
 - [Read / Write Container Instances](./rbac/container-instances-all.json)
 - [Restart Virtual Machines](./rbac/vm-restart.json)
@@ -41,17 +39,13 @@ Manually create policy to demo portal and build in policy.
 
 **Automation**
 
-Create policy with Azure CLI:
-
-Three sample in the repo:
+Create policy with Azure CLI, three sample in the repo:
 
 - [Deny: Enforce naming by resource type](./policy/name-by-type/azuredeploy.json)
 - [Deny: Enforce resource tag](./policy/tag-deny/azuredeploy.json)
 - [Append: resource tag](./policy/tag-append/azuredeploy.json)
 
 **Deny: Enforce naming by resource type**
-
-Enforce a **naming convention** for a **named resource type**, **deny** if not met.
 
 ```
 cd ~/storage/speaking-engagements/talk-azure-governance/policy/name-by-type
@@ -60,16 +54,12 @@ sh ./policyEnforceName.sh
 
 **Deny: Enforce resource tag**
 
-Enforce a tag, **deny** if not specified.
-
 ```
 cd ~/storage/speaking-engagements/talk-azure-governance/policy/tag-deny
 sh ./policyTagDeny.sh
 ```
 
 **Append: resource tag**
-
-Enforce a tag, **apply** if not specified.
 
 ```
 cd ~/storage/speaking-engagements/talk-azure-governance/policy/tag-append
