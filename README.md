@@ -2,7 +2,7 @@
 
 ## Azure RBAC
 
-**Portal Intro to RBAC**
+**Portal intro to RBAC**
 
 - Show subscription and established roles (1 owner, 1 reader)
 - Log in as reader and attempt to create something
@@ -31,9 +31,9 @@ az role assignment create --role "Container Instances Read / Write" --assignee r
 
 ## Azure Policy
 
-**Audit / Resource Group Location**
+**Portal intro to Policy**
 
-Manually create policy to demo portal and build in policy.
+Manually create policy (audit resource group location) to demo portal and built in policy.
 
 **Automation**
 
@@ -63,10 +63,6 @@ sh ./policyTagDeny.sh
 cd ~/storage/speaking-engagements/talk-azure-governance/policy/tag-append
 sh ./policyTagAppend.sh
 ```
-
-**Audit:**
-
-TODO - add policy that perhaps audits all resource group locations?
 
 **Initiative:**
 
