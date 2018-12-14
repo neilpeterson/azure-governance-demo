@@ -10,7 +10,7 @@ param (
    [string]$ManagetGroup = 'nepeters-internal',
    [string]$BlueprintName = 'DevOpsBluePrint',
    [string]$Vault = 'nepeterskv007',
-   [string]$Blueprint = 'blueprint-body.json',
+   [string]$Blueprint = './blueprint-body.json',
    [string]$TenantId,
    [string]$ClientId,
    [string]$ClientSecret,
