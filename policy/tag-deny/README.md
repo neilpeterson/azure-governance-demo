@@ -1,5 +1,4 @@
 # Deny Tag
-# Scope: Resource Group
 
 ```
 # Values

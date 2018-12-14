@@ -1,5 +1,4 @@
 # Name by type
-# Scope: Resource Group
 
 ```
 # Values

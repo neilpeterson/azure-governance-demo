@@ -10,7 +10,12 @@
 
 **Automation**
 
-Create custom role with Azure CLI
+Create custom role with Azure CLI:
+
+Two sample in the repo:
+
+- [Read / Write Container Instances](./rbac/container-instances-all.json)
+- [Restart Virtual Machines](./rbac/vm-restart.json)
 
 ```
 cd ~/storage/speaking-engagements/talk-azure-governance/rbac
