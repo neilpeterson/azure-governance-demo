@@ -114,8 +114,14 @@ pwsh ./AssignBlueprint.ps1
 
 ## Other
 
-Manual Script Execution:
+Manual script execution create
 
 ```
-pwsh CreateUpdateBlueprint.ps1 -TenantID $(az keyvault secret show --name AzureTenantID --vault-name nepeterskv007 --query value -o tsv) -ClientID $(az keyvault secret show --name AzureClientID --vault-name nepeterskv007 --query value -o tsv) -ClientSecret $(az keyvault secret show --name AzureClientSecret --vault-name nepeterskv007 --query value -o tsv) -SubscriptionId $(az keyvault secret show --name AzureSubscriptionID --vault-name nepeterskv007 --query value -o tsv) -Blueprint blueprint-body.json
+pwsh CreateUpdateBlueprint.ps1 -TenantID $(az keyvault secret show --name AzureTenantID --vault-name nepeterskv007 --query value -o tsv) -ClientID $(az keyvault secret show --name AzureClientID --vault-name nepeterskv007 --query value -o tsv) -ClientSecret $(az keyvault secret show --name AzureClientSecret --vault-name nepeterskv007 --query value -o tsv) -SubscriptionId $(az keyvault secret show --name AzureSubscriptionID --vault-name nepeterskv007 --query value -o tsv) -Blueprint blueprint-body.json -ManagementGroup nepeters-internal' -BlueprintName DevOpsBluePrint
+```
+
+Manual script execution assign
+
+```
+pwsh AssignBlueprint.ps1 -TenantID $(az keyvault secret show --name AzureTenantID --vault-name nepeterskv007 --query value -o tsv) -ClientID $(az keyvault secret show --name AzureClientID --vault-name nepeterskv007 --query value -o tsv) -ClientSecret $(az keyvault secret show --name AzureClientSecret --vault-name nepeterskv007 --query value -o tsv) -SubscriptionId $(az keyvault secret show --name AzureSubscriptionID --vault-name nepeterskv007 --query value -o tsv) -Blueprint blueprint-body.json -ManagementGroup nepeters-internal' -BlueprintName DevOpsBluePrint
 ```
