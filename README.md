@@ -112,16 +112,14 @@ pwsh ./AssignBlueprint.ps1
 
 [![Build Status](https://nepeters-devops.visualstudio.com/azure-blueprints/_apis/build/status/azure-blueprints-CI?branchName=master)](https://nepeters-devops.visualstudio.com/azure-blueprints/_build/latest?definitionId=8?branchName=master)
 
-## Other
-
-Manual script execution create
+**Manual script execution**
 
 ```
-pwsh CreateUpdateBlueprint.ps1 -TenantID $(az keyvault secret show --name AzureTenantID --vault-name nepeterskv007 --query value -o tsv) -ClientID $(az keyvault secret show --name AzureClientID --vault-name nepeterskv007 --query value -o tsv) -ClientSecret $(az keyvault secret show --name AzureClientSecret --vault-name nepeterskv007 --query value -o tsv) -SubscriptionId $(az keyvault secret show --name AzureSubscriptionID --vault-name nepeterskv007 --query value -o tsv) -Blueprint blueprint-body.json -ManagementGroup nepeters-internal' -BlueprintName DevOpsBluePrint
+pwsh CreateUpdateBlueprint.ps1 -TenantID $(az keyvault secret show --name AzureTenantID --vault-name nepeterskv007 --query value -o tsv) -ClientID $(az keyvault secret show --name AzureClientID --vault-name nepeterskv007 --query value -o tsv) -ClientSecret $(az keyvault secret show --name AzureClientSecret --vault-name nepeterskv007 --query value -o tsv) -SubscriptionId $(az keyvault secret show --name AzureSubscriptionID --vault-name nepeterskv007 --query value -o tsv) -Blueprint blueprint-body.json -ManagementGroup nepeters-internal -BlueprintName DevOpsBluePrint
 ```
 
 Manual script execution assign
 
 ```
-pwsh AssignBlueprint.ps1 -TenantID $(az keyvault secret show --name AzureTenantID --vault-name nepeterskv007 --query value -o tsv) -ClientID $(az keyvault secret show --name AzureClientID --vault-name nepeterskv007 --query value -o tsv) -ClientSecret $(az keyvault secret show --name AzureClientSecret --vault-name nepeterskv007 --query value -o tsv) -SubscriptionId $(az keyvault secret show --name AzureSubscriptionID --vault-name nepeterskv007 --query value -o tsv) -Blueprint blueprint-body.json -ManagementGroup nepeters-internal' -BlueprintName DevOpsBluePrint
+pwsh AssignBlueprint.ps1 -TenantID $(az keyvault secret show --name AzureTenantID --vault-name nepeterskv007 --query value -o tsv) -ClientID $(az keyvault secret show --name AzureClientID --vault-name nepeterskv007 --query value -o tsv) -ClientSecret $(az keyvault secret show --name AzureClientSecret --vault-name nepeterskv007 --query value -o tsv) -SubscriptionId $(az keyvault secret show --name AzureSubscriptionID --vault-name nepeterskv007 --query value -o tsv) -Blueprint assign-blueprint-body.json -ManagementGroup nepeters-internal -BlueprintName DevOpsBluePrint
 ```

@@ -8,9 +8,9 @@
  #>
 
 param (
-   [string]$ManagementGroup
-   [string]$BlueprintName
-   [string]$Blueprint
+   [string]$ManagementGroup,
+   [string]$BlueprintName,
+   [string]$Blueprint,
    [string]$TenantId,
    [string]$ClientId,
    [string]$ClientSecret,
