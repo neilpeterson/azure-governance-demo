@@ -111,3 +111,11 @@ pwsh ./AssignBlueprint.ps1
 **Azure DevOps and Blueprints**
 
 [![Build Status](https://nepeters-devops.visualstudio.com/azure-blueprints/_apis/build/status/azure-blueprints-CI?branchName=master)](https://nepeters-devops.visualstudio.com/azure-blueprints/_build/latest?definitionId=8?branchName=master)
+
+## Other
+
+Manual Script Execution:
+
+```
+pwsh CreateUpdateBlueprint.ps1 -TenantID $(az keyvault secret show --name AzureTenantID --vault-name nepeterskv007 --query value -o tsv) -ClientID $(az keyvault secret show --name AzureClientID --vault-name nepeterskv007 --query value -o tsv) -ClientSecret $(az keyvault secret show --name AzureClientSecret --vault-name nepeterskv007 --query value -o tsv) -SubscriptionId $(az keyvault secret show --name AzureSubscriptionID --vault-name nepeterskv007 --query value -o tsv) -Blueprint blueprint-body.json
+```
