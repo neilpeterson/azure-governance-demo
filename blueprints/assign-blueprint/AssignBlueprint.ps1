@@ -7,10 +7,9 @@
  #>
 
  param (
-   [string]$ManagetGroup = 'nepeters-internal',
-   [string]$BlueprintName = 'DevOpsBluePrint',
-   [string]$Vault = 'nepeterskv007',
-   [string]$Blueprint = 'assign-blueprint-body.json',
+   [string]$ManagementGroup
+   [string]$BlueprintName
+   [string]$Blueprint
    [string]$TenantId,
    [string]$ClientId,
    [string]$ClientSecret,
@@ -27,7 +26,7 @@ $Token = Invoke-RestMethod -Method Post -Uri $RequestAccessTokenUri -Body $body 
 $Headers = @{}
 $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_token)")
 $body = Get-Content -Raw -Path $Blueprint | ConvertFrom-Json
-$body.properties.blueprintId = '/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}' -f $ManagetGroup, $BlueprintName
+$body.properties.blueprintId = '/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}' -f $ManagementGroup, $BlueprintName
 $BPAssign = 'https://management.azure.com/subscriptions/{0}/providers/Microsoft.Blueprint/blueprintAssignments/{1}?api-version=2017-11-11-preview' -f $SubscriptionId, $BlueprintName
 $body = $body  | ConvertTO-JSON -Depth 3
 Invoke-RestMethod -Method PUT -Uri $BPAssign -Headers $Headers -Body $body -ContentType "application/json"

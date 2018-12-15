@@ -1,16 +1,16 @@
 <#
  .DESCRIPTION
     Creates Azure BluePrint
+
  .NOTES
     Author: Neil Peterson
     Intent: Sample to demonstrate Azure BluePrints with Azure DevOps
  #>
 
 param (
-   [string]$ManagetGroup = 'nepeters-internal',
-   [string]$BlueprintName = 'DevOpsBluePrint',
-   [string]$Vault = 'nepeterskv007',
-   [string]$Blueprint = './blueprint-body.json',
+   [string]$ManagementGroup
+   [string]$BlueprintName
+   [string]$Blueprint
    [string]$TenantId,
    [string]$ClientId,
    [string]$ClientSecret,
@@ -26,17 +26,21 @@ $Token = Invoke-RestMethod -Method Post -Uri $RequestAccessTokenUri -Body $body 
 # Create BluePrint
 $Headers = @{}
 $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_token)")
-$BPCreateUpdate = 'https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}?api-version=2017-11-11-preview' -f $ManagetGroup, $BlueprintName
+$BPCreateUpdate = 'https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}?api-version=2017-11-11-preview' -f $ManagementGroup, $BlueprintName
 $body = Get-Content -Raw -Path $Blueprint
 Invoke-RestMethod -Method PUT -Uri $BPCreateUpdate -Headers $Headers -Body $body -ContentType "application/json"
 
 # Get Published BP / Last version number
-# Can use this if I want to sequence versions numbers
-# $Get = "https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}/versions?api-version=2017-11-11-preview" -f $ManagetGroup, $BlueprintName
-# $pubBP = Invoke-RestMethod -Method GET -Uri $Get -Headers $Headers
-# write-host $pubBP.value[$pubBP.value.Count - 1].name
+$Get = "https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}/versions?api-version=2017-11-11-preview" -f $ManagementGroup, $BlueprintName
+$pubBP = Invoke-RestMethod -Method GET -Uri $Get -Headers $Headers
 
-# Publish Blueprint with random version number
-$version = get-random
-$Publish = "https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}/versions/{2}?api-version=2017-11-11-preview" -f $ManagetGroup, $BlueprintName, $version
+# If not exsist, version = 1, else version + 1
+if (!$pubBP.value[$pubBP.value.Count - 1].name) {
+   $version = 1
+} else {
+   $version = ([int]$pubBP.value[$pubBP.value.Count - 1].name) + 1
+}
+
+# Publish Blueprint
+$Publish = "https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}/versions/{2}?api-version=2017-11-11-preview" -f $ManagementGroup, $BlueprintName, $version
 Invoke-RestMethod -Method PUT -Uri $Publish -Headers $Headers
