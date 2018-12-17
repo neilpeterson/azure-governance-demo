@@ -42,7 +42,7 @@ if (!$pubBP.value[$pubBP.value.Count - 1].name) {
    $version = ([int]$pubBP.value[$pubBP.value.Count - 1].name) + 1
 }
 
-$artifacts = Get-ChildItem $artifacts
+$artifacts = Get-ChildItem $Artifacts
 
 foreach ($item in $artifacts) {
    $body = Get-Content -Raw -Path $item
