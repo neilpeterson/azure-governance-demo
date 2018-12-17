@@ -15,7 +15,7 @@
     [string]$ClientId,
     [string]$ClientSecret,
     [string]$SubscriptionId,
-    [string]$artifacts
+    [string]$Artifacts
   )
 
 # Acquire an access token
