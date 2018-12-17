@@ -7,15 +7,15 @@
     Intent: Sample to demonstrate Azure BluePrints with Azure DevOps
  #>
 
-param (
-   [string]$ManagementGroup,
-   [string]$BlueprintName,
-   [string]$Blueprint,
-   [string]$TenantId,
-   [string]$ClientId,
-   [string]$ClientSecret,
-   [string]$SubscriptionId
- )
+ param (
+    [string]$ManagementGroup,
+    [string]$BlueprintName,
+    [string]$Blueprint,
+    [string]$TenantId,
+    [string]$ClientId,
+    [string]$ClientSecret,
+    [string]$SubscriptionId
+  )
 
 # Acquire an access token
 $Resource = "https://management.core.windows.net/"
@@ -23,7 +23,7 @@ $RequestAccessTokenUri = 'https://login.microsoftonline.com/{0}/oauth2/token' -f
 $body = "grant_type=client_credentials&client_id={0}&client_secret={1}&resource={2}" -f $ClientId, $ClientSecret, $Resource
 $Token = Invoke-RestMethod -Method Post -Uri $RequestAccessTokenUri -Body $body -ContentType 'application/x-www-form-urlencoded'
 
-# Create BluePrint
+#  # Create BluePrint
 $Headers = @{}
 $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_token)")
 $BPCreateUpdate = 'https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}?api-version=2017-11-11-preview' -f $ManagementGroup, $BlueprintName
@@ -39,6 +39,14 @@ if (!$pubBP.value[$pubBP.value.Count - 1].name) {
    $version = 1
 } else {
    $version = ([int]$pubBP.value[$pubBP.value.Count - 1].name) + 1
+}
+
+$artifacts = Get-ChildItem .\artifacts
+
+foreach ($item in $artifacts) {
+   $body = Get-Content -Raw -Path $item
+   $artifactURI = "https://management.azure.com/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}/artifacts/{2}?api-version=2017-11-11-preview" -f $ManagementGroup, $BlueprintName, $item.name.Split('.')[0]
+   Invoke-RestMethod -Method PUT -Uri $artifactURI -Headers $Headers -Body $body -ContentType "application/json"
 }
 
 # Publish Blueprint

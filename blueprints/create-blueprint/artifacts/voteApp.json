@@ -1,0 +1,117 @@
+{
+    "kind": "template",
+    "properties": {
+        "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+              "containerName": {
+                "type": "string",
+                "metadata": {
+                  "description": "Name for the container group"
+                },
+                "defaultValue": "acilinuxpublicipcontainergroup"
+              },
+              "databaseAccountName": {
+                "type": "string",
+                "metadata": {
+                  "description": "Name for the container group"
+                },
+                "defaultValue": "azurevote"
+              }
+            },
+            "variables": {
+              "offerType": "Standard",
+              "apiType": "GlobalDocumentDB",
+              "location": "[resourceGroup().location]",
+              "port": "80",
+              "image": "microsoft/azure-vote-front:cosmosdb",
+              "cpuCores": "1.0",
+              "memoryInGb": "1.5"
+
+            },
+            "resources": [
+              {
+                "apiVersion": "2015-04-08",
+                "type": "Microsoft.DocumentDB/databaseAccounts",
+                "kind": "[if(equals(variables('apiType'), 'MongoDB'), 'MongoDB', 'GlobalDocumentDB')]",
+                "name": "[parameters('databaseAccountName')]",
+                "location": "[variables('location')]",
+                "properties": {
+                  "name": "[parameters('databaseAccountName')]",
+                  "databaseAccountOfferType": "[variables('offerType')]",
+                  "locations": [
+                    {
+                      "locationName": "[variables('location')]",
+                      "failoverPriority": 0
+                    },
+                    {
+                      "locationName": "[variables('location')]",
+                      "failoverPriority": 1
+                    }
+                  ]
+                },
+                "tags": {
+                  "defaultExperience": "[if(equals(variables('apiType'), 'Cassandra'), 'Cassandra', if(equals(variables('apiType'), 'Gremlin'), 'Graph', if(equals(variables('apiType'), 'MongoDB'), 'MongoDB', if(equals(variables('apiType'), 'SQL'), 'DocumentDB', if(equals(variables('apiType'), 'Table'), 'Table', '')))))]"
+                }
+              },
+              {
+                "name": "[parameters('containerName')]",
+                "type": "Microsoft.ContainerInstance/containerGroups",
+                "apiVersion": "2018-10-01",
+                "location": "[variables('location')]",
+                "properties": {
+                  "containers": [
+                    {
+                      "name": "[parameters('containerName')]",
+                      "properties": {
+                        "image": "[variables('image')]",
+                        "ports": [
+                          {
+                            "port": "[variables('port')]"
+                          }
+                        ],
+                        "environmentVariables": [
+                          {
+                            "name": "COSMOS_DB_ENDPOINT",
+                            "secureValue": "[concat(reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('databaseAccountName'))).documentEndpoint)]"
+                          },
+                          {
+                            "name": "COSMOS_DB_MASTERKEY",
+                            "secureValue": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('databaseAccountName')), '2015-04-08').primaryMasterKey]"
+                          }
+                        ],
+                        "resources": {
+                          "requests": {
+                            "cpu": "[variables('cpuCores')]",
+                            "memoryInGb": "[variables('memoryInGb')]"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "osType": "Linux",
+                  "ipAddress": {
+                    "type": "Public",
+                    "ports": [
+                      {
+                        "protocol": "tcp",
+                        "port": "[variables('port')]"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+        },
+        "resourceGroup": "line-of-buisness-app",
+        "parameters": {
+            "containerName": {
+                "value": "[parameters('containerName')]"
+            },
+            "databaseAccountName": {
+                "value": "[parameters('databaseAccountName')]"
+            }
+        }
+    }
+}
