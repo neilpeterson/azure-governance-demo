@@ -1,0 +1,20 @@
+{
+	"properties": {
+        "kind": "policyAssignment",
+        "type": "Microsoft.Blueprint/blueprints/artifacts",
+		"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+		"parameters": {
+			"tagName": {
+				"value": "[parameters(\u0027applytaganditsdefaultvalue_tagName\u0027)]"
+			},
+			"tagValue": {
+				"value": "[parameters(\u0027applytaganditsdefaultvalue_tagValue\u0027)]"
+			}
+		},
+		"resourceGroup": "ResourceGroup",
+		"dependsOn": [
+
+		],
+		"displayName": "Apply tag and its default value"
+	}
+}
