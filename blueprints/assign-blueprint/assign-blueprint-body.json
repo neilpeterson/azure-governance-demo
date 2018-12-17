@@ -7,11 +7,11 @@
       "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
       "blueprintId": "",
       "parameters": {
-      },
-      "resourceGroups": {
-        "storageRG": {
-          "name": "defaultRG",
-          "location": "eastus"
+        "containerName": {
+          "value": "testcontainer"
+        },
+        "databaseAccountName": {
+          "value": "testcontainer"
         }
       }
     }
