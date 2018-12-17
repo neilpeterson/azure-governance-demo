@@ -8,8 +8,8 @@
       "blueprintId": "",
       "resourceGroups": {
         "storageRG": {
-            "name": "StorageAccount",
-            "location": "eastus2"
+            "name": "line-of-buisness-app",
+            "location": "eastus"
         }
     },
       "parameters": {
