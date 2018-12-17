@@ -6,6 +6,12 @@
     "properties": {
       "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
       "blueprintId": "",
+      "resourceGroups": {
+        "storageRG": {
+            "name": "StorageAccount",
+            "location": "eastus2"
+        }
+    },
       "parameters": {
         "containerName": {
           "value": "testcontainer"
