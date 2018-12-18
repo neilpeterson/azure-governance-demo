@@ -17,6 +17,9 @@
       }
     },
       "parameters": {
+        "listOfResourceTypesAllowed": {
+          "value": "Microsoft.ContainerInstance/containerGroups"
+      }
       }
     }
   }

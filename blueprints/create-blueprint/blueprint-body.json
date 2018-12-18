@@ -3,7 +3,12 @@
         "description": "This blueprint sets tag policy and role assignment on the subscription, creates a ResourceGroup, and deploys a resource template and role assignment to that ResourceGroup.",
         "targetScope": "subscription",
         "parameters": {
-
+            "listOfResourceTypesAllowed": {
+                "type": "string",
+                "metadata": {
+                    "displayName": "List of resource types."
+                }
+            }
         },
         "resourceGroups": {
             "line-of-buisness-app": {
