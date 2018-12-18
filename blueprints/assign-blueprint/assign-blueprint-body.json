@@ -10,7 +10,11 @@
         "line-of-buisness-app": {
             "name": "line-of-buisness-app",
             "location": "eastus"
-        }
+        },
+        "container-instances": {
+          "name": "container-instances",
+          "location": "eastus"
+      }
     },
       "parameters": {
         "containerName": {
