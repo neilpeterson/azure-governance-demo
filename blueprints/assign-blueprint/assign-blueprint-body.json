@@ -7,7 +7,7 @@
       "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
       "blueprintId": "",
       "resourceGroups": {
-        "storageRG": {
+        "line-of-buisness-app": {
             "name": "line-of-buisness-app",
             "location": "eastus"
         }
