@@ -16,14 +16,12 @@ Create custom role with Azure CLI, two samples in the repo:
 **Read / Write Container Instances:**
 
 ```
-cd ~/storage/speaking-engagements/talk-azure-governance/rbac
 az role definition create --role-definition container-instances-all.json
 ```
 
 Assign custom role with Azure CLI
 
 ```
-cd ~/storage/speaking-engagements/talk-azure-governance/rbac
 az role assignment create --role "Container Instances Read / Write" --assignee rebecca@nepeters.com
 ```
 
@@ -44,21 +42,18 @@ Create policy with Azure CLI, three sample in the repo:
 **Deny: Enforce naming by resource type**
 
 ```
-cd ~/storage/speaking-engagements/talk-azure-governance/policy/name-by-type
 sh ./policyEnforceName.sh
 ```
 
 **Deny: Enforce resource tag**
 
 ```
-cd ~/storage/speaking-engagements/talk-azure-governance/policy/tag-deny
 sh ./policyTagDeny.sh
 ```
 
 **Append: resource tag**
 
 ```
-cd ~/storage/speaking-engagements/talk-azure-governance/policy/tag-append
 sh ./policyTagAppend.sh
 ```
 
@@ -85,14 +80,12 @@ Currently no PowerShell or CLI support for Blueprints. I've included PowerShell 
 Create and Publish:
 
 ```
-cd ~/storage/speaking-engagements/talk-azure-governance/blueprints/blueprint-v1/create-blueprint
 pwsh ./CreateUpdateBlueprint.ps1
 ```
 
 Assign:
 
 ```
-cd ~/storage/speaking-engagements/talk-azure-governance/blueprints/assign-blueprint
 pwsh ./AssignBlueprint.ps1
 ```
 
