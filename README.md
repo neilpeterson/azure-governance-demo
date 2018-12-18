@@ -1,15 +1,3 @@
-Build:
-
-[![Build Status](https://nepeters-devops.visualstudio.com/azure-blueprints/_apis/build/status/azure-blueprints-CI?branchName=master)](https://nepeters-devops.visualstudio.com/azure-blueprints/_build/latest?definitionId=8?branchName=master)
-
-Test Deployment:
-
-![Deployment Status Test](https://nepeters-devops.vsrm.visualstudio.com/_apis/public/Release/badge/6f0a6eee-bcec-4def-a3c3-eb6ac2005f71/2/2)
-
-QA Deployment:
-
-![Deployment Status QA](https://nepeters-devops.vsrm.visualstudio.com/_apis/public/Release/badge/6f0a6eee-bcec-4def-a3c3-eb6ac2005f71/2/5)
-
 ## Azure RBAC
 
 **Portal intro to RBAC**
@@ -110,7 +98,15 @@ pwsh ./AssignBlueprint.ps1
 
 **Azure DevOps and Blueprints**
 
-[![Build Status](https://nepeters-devops.visualstudio.com/azure-blueprints/_apis/build/status/azure-blueprints-CI?branchName=master)](https://nepeters-devops.visualstudio.com/azure-blueprints/_build/latest?definitionId=8?branchName=master)
+![Build Status](https://nepeters-devops.visualstudio.com/azure-blueprints/_apis/build/status/azure-blueprints-CI?branchName=master)
+
+Test Deployment:
+
+![Deployment Status Test](https://nepeters-devops.vsrm.visualstudio.com/_apis/public/Release/badge/6f0a6eee-bcec-4def-a3c3-eb6ac2005f71/2/2)
+
+QA Deployment:
+
+![Deployment Status QA](https://nepeters-devops.vsrm.visualstudio.com/_apis/public/Release/badge/6f0a6eee-bcec-4def-a3c3-eb6ac2005f71/2/5)
 
 **Manual script execution**
 

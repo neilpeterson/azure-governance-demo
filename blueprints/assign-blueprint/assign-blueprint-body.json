@@ -1,26 +1,30 @@
 {
-    "identity": {
-      "type": "SystemAssigned"
-    },
-    "location": "eastus",
-    "properties": {
-      "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
-      "blueprintId": "",
-      "resourceGroups": {
-        "line-of-buisness-app": {
-            "name": "line-of-buisness-app",
-            "location": "eastus"
-        },
-        "container-instances": {
-          "name": "container-instances",
-          "location": "eastus"
+	"identity": {
+		"type": "SystemAssigned"
+	},
+	"location": "eastus",
+	"properties": {
+		"description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+		"blueprintId": "",
+		"resourceGroups": {
+			"line-of-buisness-app": {
+				"name": "line-of-buisness-app",
+				"location": "eastus"
+			},
+			"container-instances": {
+				"name": "container-instances",
+				"location": "eastus"
+			}
+		},
+		"parameters": {
+			"tagName": {
+				"type": "string",
+				"value": "demoTag"
+			},
+			"tagValue": {
+				"type": "string",
+				"value": "demoTag"
       }
-    },
-      "parameters": {
-        "listOfResourceTypesAllowed": {
-          "type": "array",
-          "value": ["Microsoft.ContainerInstance/containerGroups"]
-      }
-      }
-    }
-  }
+		}
+	}
+}
