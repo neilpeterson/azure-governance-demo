@@ -3,20 +3,7 @@
         "description": "This blueprint sets tag policy and role assignment on the subscription, creates a ResourceGroup, and deploys a resource template and role assignment to that ResourceGroup.",
         "targetScope": "subscription",
         "parameters": {
-            "containerName": {
-                "type": "string",
-                "metadata": {
-                    "displayName": "Azure Vote App Container Name.",
-                    "description": null
-                }
-            },
-            "databaseAccountName": {
-                "type": "string",
-                "metadata": {
-                    "displayName": "Azure Vote App Cosmos DB Name.",
-                    "description": null
-                }
-            }
+
         },
         "resourceGroups": {
             "line-of-buisness-app": {

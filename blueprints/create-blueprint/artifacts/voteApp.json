@@ -5,22 +5,10 @@
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
             "contentVersion": "1.0.0.0",
             "parameters": {
-              "containerName": {
-                "type": "string",
-                "metadata": {
-                  "description": "Name for the container group"
-                },
-                "defaultValue": "acilinuxpublicipcontainergroup"
-              },
-              "databaseAccountName": {
-                "type": "string",
-                "metadata": {
-                  "description": "Name for the container group"
-                },
-                "defaultValue": "azurevote"
-              }
             },
             "variables": {
+              "databaseAccountName": "[concat(uniquestring(resourceGroup().id), 'db')]",
+              "containerName": "[concat(uniquestring(resourceGroup().id), 'container')]",
               "offerType": "Standard",
               "apiType": "GlobalDocumentDB",
               "location": "[resourceGroup().location]",
@@ -35,10 +23,10 @@
                 "apiVersion": "2015-04-08",
                 "type": "Microsoft.DocumentDB/databaseAccounts",
                 "kind": "[if(equals(variables('apiType'), 'MongoDB'), 'MongoDB', 'GlobalDocumentDB')]",
-                "name": "[parameters('databaseAccountName')]",
+                "name": "[variables('databaseAccountName')]",
                 "location": "[variables('location')]",
                 "properties": {
-                  "name": "[parameters('databaseAccountName')]",
+                  "name": "[variables('databaseAccountName')]",
                   "databaseAccountOfferType": "[variables('offerType')]",
                   "locations": [
                     {
@@ -56,14 +44,14 @@
                 }
               },
               {
-                "name": "[parameters('containerName')]",
+                "name": "[variables('containerName')]",
                 "type": "Microsoft.ContainerInstance/containerGroups",
                 "apiVersion": "2018-10-01",
                 "location": "[variables('location')]",
                 "properties": {
                   "containers": [
                     {
-                      "name": "[parameters('containerName')]",
+                      "name": "[variables('containerName')]",
                       "properties": {
                         "image": "[variables('image')]",
                         "ports": [
@@ -74,11 +62,11 @@
                         "environmentVariables": [
                           {
                             "name": "COSMOS_DB_ENDPOINT",
-                            "secureValue": "[concat(reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('databaseAccountName'))).documentEndpoint)]"
+                            "secureValue": "[concat(reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('databaseAccountName'))).documentEndpoint)]"
                           },
                           {
                             "name": "COSMOS_DB_MASTERKEY",
-                            "secureValue": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('databaseAccountName')), '2015-04-08').primaryMasterKey]"
+                            "secureValue": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('databaseAccountName')), '2015-04-08').primaryMasterKey]"
                           }
                         ],
                         "resources": {
@@ -105,13 +93,6 @@
             ]
         },
         "resourceGroup": "line-of-buisness-app",
-        "parameters": {
-            "containerName": {
-                "value": "[parameters('containerName')]"
-            },
-            "databaseAccountName": {
-                "value": "[parameters('databaseAccountName')]"
-            }
-        }
+        "parameters": {}
     }
 }
