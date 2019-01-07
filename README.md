@@ -97,10 +97,6 @@ Test Deployment:
 
 ![Deployment Status Test](https://nepeters-devops.vsrm.visualstudio.com/_apis/public/Release/badge/6f0a6eee-bcec-4def-a3c3-eb6ac2005f71/2/2)
 
-QA Deployment:
-
-![Deployment Status QA](https://nepeters-devops.vsrm.visualstudio.com/_apis/public/Release/badge/6f0a6eee-bcec-4def-a3c3-eb6ac2005f71/2/5)
-
 **Manual script execution**
 
 ```
