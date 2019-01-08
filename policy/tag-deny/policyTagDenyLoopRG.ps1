@@ -7,19 +7,20 @@
     Intent: Sample to demonstrate Azure Policy
  #>
 
-param (
-    [string]$ResourceGroupName,
-    [string]$Location,
+ param (
+    [string]$ResourceGroupNameFilter,
     [string]$PolicyName,
     [string]$PolicyFile="./policy/tag-deny/azuredeploy.json",
     [string]$PolicyParamFile="./policy/tag-deny/azurepolicy.parameters.json"
 )
 
-# Create  resource group
-$ResourceGroupObject = New-AzResourceGroup -Name $ResourceGroupName -Location $Location
-
 # Create policy
 $PolicyDefinition = New-AzPolicyDefinition -Name $PolicyName -Policy $PolicyFile -DisplayName $PolicyName -Description $PolicyName -Parameter $PolicyParamFile -Mode All
 
-# Assign policy
-New-AzPolicyAssignment -Name $PolicyName -DisplayName $PolicyName -Scope $ResourceGroupObject.ResourceId -PolicyDefinition $PolicyDefinition -PolicyParameter '{"tagName": {"value": "costCenter"}}'
+# Get resource groups
+$ResourceGroupObjects = Get-AzResourceGroup | Where-Object {$_.ResourceGroupName -like "*$ResourceGroupNameFilter*"}
+
+# Assign Policy
+foreach ($ResourceGroup in $ResourceGroupObjects) {
+    New-AzPolicyAssignment -Name $PolicyName -DisplayName $PolicyName -Scope $ResourceGroup.ResourceId -PolicyDefinition $PolicyDefinition -PolicyParameter '{"tagName": {"value": "costCenter"}}'
+}
