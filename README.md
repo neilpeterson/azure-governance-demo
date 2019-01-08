@@ -51,10 +51,18 @@ sh ./policyEnforceName.sh
 sh ./policyTagDeny.sh
 ```
 
+```
+pwsh ./policy/tag-deny/policyTagDeny.ps1 -ResourceGroupName DemoTagDenyPolicy -PolicyName DemoTagDenyPolicy -Location eastus
+```
+
 **Append: resource tag**
 
 ```
 sh ./policyTagAppend.sh
+```
+
+```
+pwsh ./policy/tag-append/policyTagAppend.ps1 -ResourceGroupName DemoTagAppendPolicy -PolicyName DemoTagAppendPolicy -Location eastus
 ```
 
 **Initiative:**
