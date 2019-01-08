@@ -1,8 +1,9 @@
 
 <#
  .DESCRIPTION
-    Creates and applies an Azure Policy to deny creation if resource tag (costCenter) does not exsist.
- .NOTES
+    Creates and applies an Azure Policy to appends tag (costCenter) if it does not exsist.
+
+    .NOTES
     Author: Neil Peterson
     Intent: Sample to demonstrate Azure Policy
  #>
