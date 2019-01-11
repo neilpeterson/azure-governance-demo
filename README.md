@@ -1,4 +1,4 @@
-## Azure RBAC
+## Azure RBAC:
 
 **Portal intro to RBAC**
 
@@ -51,10 +51,18 @@ sh ./policyEnforceName.sh
 sh ./policyTagDeny.sh
 ```
 
+```
+pwsh ./policy/tag-deny/policyTagDeny.ps1 -ResourceGroupName DemoTagDenyPolicy -PolicyName DemoTagDenyPolicy -Location eastus
+```
+
 **Append: resource tag**
 
 ```
 sh ./policyTagAppend.sh
+```
+
+```
+pwsh ./policy/tag-append/policyTagAppend.ps1 -ResourceGroupName DemoTagAppendPolicy -PolicyName DemoTagAppendPolicy -Location eastus
 ```
 
 **Initiative:**
@@ -96,10 +104,6 @@ pwsh ./AssignBlueprint.ps1
 Test Deployment:
 
 ![Deployment Status Test](https://nepeters-devops.vsrm.visualstudio.com/_apis/public/Release/badge/6f0a6eee-bcec-4def-a3c3-eb6ac2005f71/2/2)
-
-QA Deployment:
-
-![Deployment Status QA](https://nepeters-devops.vsrm.visualstudio.com/_apis/public/Release/badge/6f0a6eee-bcec-4def-a3c3-eb6ac2005f71/2/5)
 
 **Manual script execution**
 
