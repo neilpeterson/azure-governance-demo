@@ -1,6 +1,6 @@
 {
     "properties": {
-        "description": "Demo Azure DEvOps Blueprint.",
+        "description": "Demo Azure DevOps Blueprint.",
         "targetScope": "subscription",
         "parameters": {
             "tagName": {
@@ -13,6 +13,12 @@
                 "type": "string",
                 "metadata": {
                     "displayName": "Tag value."
+                }
+            },
+            "listOfAllowedSKUs": {
+                "type": "array",
+                "metadata": {
+                    "displayName": "Allowed Storage account SKU."
                 }
             }
         },
