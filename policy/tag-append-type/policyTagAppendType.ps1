@@ -25,4 +25,5 @@ $PolicyDefinition = New-AzPolicyDefinition -Name $PolicyName -Policy $PolicyFile
 
 # Assign policy
 $PolicyParam = "{`"tagName`": {`"value`": `"costCenter`"},`"tagValue`": {`"value`": `"headquarter`"},`"resourceType`": {`"value`": `"$ResourceType`"}}"
+
 New-AzPolicyAssignment -Name $PolicyName -DisplayName $PolicyName -Scope $ResourceGroupObject.ResourceId -PolicyDefinition $PolicyDefinition -PolicyParameter $PolicyParam
