@@ -26,8 +26,8 @@
 				"value": "demoTag"
 			},
 			"listOfAllowedSKUs": {
-				"type": "array",
-				"value": "Standard_LRS"
+				"type": "Array",
+				"value": ["Standard_LRS"]
 			}
 		}
 	}
