@@ -28,5 +28,5 @@ $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_tok
 $body = Get-Content -Raw -Path $Blueprint | ConvertFrom-Json
 $body.properties.blueprintId = '/providers/Microsoft.Management/managementGroups/{0}/providers/Microsoft.Blueprint/blueprints/{1}' -f $ManagementGroup, $BlueprintName
 $BPAssign = 'https://management.azure.com/subscriptions/{0}/providers/Microsoft.Blueprint/blueprintAssignments/{1}?api-version=2017-11-11-preview' -f $SubscriptionId, $BlueprintName
-$body = $body  | ConvertTO-JSON -Depth 3
+$body = $body  | ConvertTO-JSON -Depth 4
 Invoke-RestMethod -Method PUT -Uri $BPAssign -Headers $Headers -Body $body -ContentType "application/json"
