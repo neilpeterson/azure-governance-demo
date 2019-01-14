@@ -16,7 +16,7 @@
                 }
             },
             "listOfAllowedSKUs": {
-				"type": "array",
+				"type": "Array",
 				"value": "Standard_LRS"
 			}
         },
