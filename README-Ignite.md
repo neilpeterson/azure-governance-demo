@@ -3,7 +3,7 @@
 - [PORTAL] Manual configure reader (rebecca@nepeters.com)
 - Azure CLI create custom role and assign
 
-Create Role:
+Create Role (Cloud Shell)
 
 ```
 az role definition create --role-definition vm-restart.json
@@ -24,7 +24,7 @@ az role assignment create --role "Restart Virtual Machines" --assignee rebecca@n
 Create resource group and apply policy:
 
 ```
-pwsh ./policy-tag-type/tagByType.ps1 -ResourceGroupName policy-demo-custom -ResourceType Microsoft.Storage/storageAccounts -Location eastus -PolicyName tagByType
+pwsh ./policy-tag-type/policyTagAppendType.ps1 -ResourceGroupName policy-demo-custom -ResourceType Microsoft.Storage/storageAccounts -Location eastus -PolicyName tagByType
 ```
 
 Create storage account which will be tagged.
