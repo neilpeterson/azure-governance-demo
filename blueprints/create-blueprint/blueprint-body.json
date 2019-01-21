@@ -14,11 +14,7 @@
                 "metadata": {
                     "displayName": "Tag value."
                 }
-            },
-            "listOfAllowedSKUs": {
-				"type": "Array",
-				"value": "Standard_LRS"
-			}
+            }
         },
         "resourceGroups": {
             "line-of-buisness-app": {
