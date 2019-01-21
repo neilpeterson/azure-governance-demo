@@ -21,10 +21,16 @@ az role assignment create --role "Restart Virtual Machines" --assignee rebecca@n
 - [PORTAL] Apply single policy (tag resource)
 - Apply custom policy (tag resource by type)
 
+Change directory:
+
+```
+cd /Users/neilpeterson/storage/speaking-engagements/talk-azure-governance/policy/tag-append-type
+```
+
 Create resource group and apply policy:
 
 ```
-pwsh ./policy-tag-type/policyTagAppendType.ps1 -ResourceGroupName policy-demo-custom -ResourceType Microsoft.Storage/storageAccounts -Location eastus -PolicyName tagByType
+pwsh policyTagAppendType.ps1 -ResourceGroupName policy-demo-custom -ResourceType Microsoft.Storage/storageAccounts -Location eastus -PolicyName tagByType
 ```
 
 Create storage account which will be tagged.
