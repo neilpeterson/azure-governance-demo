@@ -15,6 +15,8 @@ Assign user to Role:
 az role assignment create --role "Restart Virtual Machines" --assignee rebecca@nepeters.com
 ```
 
+## Resource locks
+
 ## Azure Policy
 
 - [PORTAL] Management Group
