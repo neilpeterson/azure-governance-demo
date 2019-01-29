@@ -24,10 +24,6 @@
 			"tagValue": {
 				"type": "string",
 				"value": "demoTag"
-			},
-			"listOfAllowedSKUs": {
-				"type": "Array",
-				"value": ["Standard_LRS"]
 			}
 		}
 	}
